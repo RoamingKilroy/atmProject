@@ -4,7 +4,7 @@ const { getBalance } = require("./atm");
 const { withdrawAmount } = require("./atm");
 const { depositAmount } = require("./atm");
 const { validatePin } = require("./atm");
-const {pinNum} = require("./account");
+
 
 //validation function
 function integers(input){ 
@@ -18,7 +18,7 @@ function integers(input){
 
 //Calls pin validation and pushes to main menu if valid. 
 function inputPin(){
-    let correctPin = validatePin(pinNum);
+    let correctPin = validatePin();
     if (correctPin === true){
         mainMenu();
     }
@@ -29,7 +29,8 @@ function inputPin(){
 
 //Main menu selector.
 function mainMenu(){
-    let keyEnter = prompt("Which would you like to do? \n1: Check Balance.\n2: Deposit Funds\n3: Withdraw Funds\n4: Exit.", integers);
+    console.log("Which would you like to do? \n1: Check Balance.\n2: Deposit Funds\n3: Withdraw Funds\n4: Exit.");
+    let keyEnter = prompt("",integers)
     switch(keyEnter){
         case '1':
             getBalance();
@@ -44,7 +45,7 @@ function mainMenu(){
             mainMenu();
             break;
         case "4":
-            process.exit(0); //kills the loop and allows the code to exit
+            console.log("Thank you for being a loyal customer!")
             break;
         default:
         console.log("Wrong user input, please try again\n");

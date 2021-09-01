@@ -5,5 +5,5 @@ let pin = "1111";
 
 module.exports = {
     balance: balance,
-    pinNum: pin,
+    pin: pin
 }
