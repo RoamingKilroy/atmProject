@@ -1,30 +1,18 @@
 "use strict";
 const prompt = require('prompt-sync')();
-const { getBalance } = require("./atm");
-const { withdrawAmount } = require("./atm");
-const { depositAmount } = require("./atm");
-const { validatePin } = require("./atm");
-
+const { getBalance, withdrawAmount, depositAmount,validatePin } = require("./atm");
 
 //validation function
 function integers(input){ 
-    if(parseInt(input)){
-      return true;
-    }
-    else{
-      return false;
-    }
+    if(parseInt(input)) return true;
+    else return false;
 }
 
 //Calls pin validation and pushes to main menu if valid. 
 function inputPin(){
     let correctPin = validatePin();
-    if (correctPin === true){
-        mainMenu();
-    }
-    else{
-        return inputPin();
-    }
+    if (correctPin === true)mainMenu(); //ternary
+    else return inputPin();
 }
 
 //Main menu selector.
@@ -48,9 +36,9 @@ function mainMenu(){
             console.log("Thank you for being a loyal customer!")
             break;
         default:
-        console.log("Wrong user input, please try again\n");
-        mainMenu();
-        break;
+            console.log("Wrong user input, please try again\n");
+            mainMenu();
+            break;
     }
 }
 
